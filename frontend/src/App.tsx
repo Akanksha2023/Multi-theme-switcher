@@ -15,14 +15,15 @@ const App = () => {
 
   // Redirect to correct theme URL when theme changes
   useEffect(() => {
-    if (theme === 'theme1' && location.pathname.startsWith('/theme2')) {
-      navigate('/', { replace: true });
-    } else if (theme === 'theme2' && !location.pathname.startsWith('/theme2')) {
-      navigate('/theme2/home', { replace: true });
-    } else if (theme === 'theme3' && location.pathname !== '/theme3') {
-      navigate('/theme3', { replace: true });
-    }
-  }, [theme]);
+  if (theme === 'theme1' && location.pathname.startsWith('/theme2')) {
+    navigate('/', { replace: true });
+  } else if (theme === 'theme2' && !location.pathname.startsWith('/theme2')) {
+    navigate('/theme2/home', { replace: true });
+  } else if (theme === 'theme3' && location.pathname !== '/theme3') {
+    navigate('/theme3', { replace: true });
+  }
+}, [theme, location.pathname]);
+
 
   return (
     <>
