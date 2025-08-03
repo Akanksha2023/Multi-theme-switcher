@@ -9,11 +9,12 @@ import ThemeDropdown from '../theme_dropdown';
 const Theme2Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-
+  // Prevent scroll when mobile sidebar is open
   useEffect(() => {
     document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
   }, [isSidebarOpen]);
+
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
     <div className="bg-gray-900 text-white font-serif min-h-screen relative flex flex-col md:flex-row">
@@ -29,8 +30,8 @@ const Theme2Layout = () => {
 
       {/* Sidebar */}
       <aside
-        className={`fixed top-0 left-0 h-full bg-gray-800 shadow-lg px-4 py-6 z-40 transform transition-transform duration-300 
-        w-4/5 sm:w-24 md:w-46 md:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+        className={`absolute md:fixed top-0 left-0 h-full bg-gray-800 shadow-lg px-4 py-6 z-40 transform transition-transform duration-300 
+        w-4/5 sm:w-56 md:w-64 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       >
         <div className="hidden md:block mb-8">
           <h2 className="text-2xl font-extrabold tracking-wide">🛒 ShopMate</h2>
@@ -72,8 +73,8 @@ const Theme2Layout = () => {
         ></div>
       )}
 
-      {/* Main content */}
-      <main className="pt-16 md:pt-8 w-full px-6 py-6 md:ml-56 overflow-x-hidden">
+      {/* Main Content */}
+      <main className="pt-16 md:pt-8 w-full px-6 py-6 md:ml-64 overflow-x-hidden min-h-screen">
         <Outlet />
       </main>
     </div>
