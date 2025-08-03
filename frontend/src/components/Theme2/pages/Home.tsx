@@ -28,7 +28,8 @@ const Home = () => {
   };
 
   return (
-    <div className="text-white">
+  <div className="text-white">
+    <div className="max-w-7xl mx-auto px-2 sm:px-4">
       <h1 className="text-3xl font-bold mb-6">Featured Products</h1>
 
       {loading && <p className="text-gray-400">Loading products...</p>}
@@ -60,7 +61,9 @@ const Home = () => {
         ))}
       </div>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default Home;

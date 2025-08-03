@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { NavLink, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import ThemeDropdown from '../theme_dropdown';
 import { useTheme } from '../../contexts/ThemeContext';
@@ -18,7 +18,7 @@ const Theme2Layout = () => {
 
   return (
     <div className={`min-h-screen flex bg-gray-900 text-white font-sans ${theme}`}>
-      {/* Mobile Toggle Button */}
+      {/* Sidebar Toggle Button for Mobile */}
       <button
         onClick={toggleSidebar}
         className="md:hidden fixed top-4 left-4 z-50 p-2 bg-gray-800 text-white rounded-md"
@@ -35,7 +35,7 @@ const Theme2Layout = () => {
           flex flex-col justify-between transform transition-transform duration-300 ease-in-out
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}
       >
-        {/* Close Button */}
+        {/* Close Button for Mobile */}
         {isSidebarOpen && (
           <button
             onClick={toggleSidebar}
@@ -45,14 +45,12 @@ const Theme2Layout = () => {
           </button>
         )}
 
-        {/* Top Section */}
+        {/* Sidebar Content */}
         <div>
-          <h2 className="text-2xl font-extrabold mb-8 tracking-wide">🛒 ShopMate</h2>
-          <div className="mb-6">
-            <ThemeDropdown />
-          </div>
+          <h2 className="text-2xl font-extrabold mb-4 tracking-wide">🛒 ShopMate</h2>
 
-          <nav className="flex flex-col gap-3">
+          {/* Nav Links */}
+          <nav className="flex flex-col gap-3 mb-6">
             {['home', 'about', 'faq', 'contact'].map((item) => (
               <NavLink
                 key={item}
@@ -68,16 +66,21 @@ const Theme2Layout = () => {
               </NavLink>
             ))}
           </nav>
+
+          {/* Theme Dropdown */}
+          <div className="mb-4">
+            <ThemeDropdown />
+          </div>
         </div>
 
         {/* Footer */}
-        <footer className="text-xs text-gray-400 text-center mt-8 md:mt-auto">
+        <footer className="text-xs text-gray-400 text-center mt-auto">
           © 2025 ShopMate, Inc.
         </footer>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-4 mt-16 md:mt-0 md:ml-56 overflow-y-auto">
+      <main className="flex-1 p-4 mt-16 md:mt-0 md:ml-56 overflow-y-auto bg-gray-900 text-white">
         <Outlet />
       </main>
     </div>

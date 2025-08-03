@@ -15,7 +15,7 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <div className="space-y-6">
+    <div className="max-w-4xl mx-auto px-2 sm:px-4 space-y-6">
       <h1 className="text-3xl font-bold">FAQs</h1>
       <div className="space-y-4">
         {faqs.map((item, i) => (
