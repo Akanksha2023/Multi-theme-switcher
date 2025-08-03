@@ -7,7 +7,7 @@ import FAQ from './pages/FAQ';
 import ThemeDropdown from '../theme_dropdown';
 
 const Theme2Layout = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // Prevent scroll when mobile sidebar is open
   useEffect(() => {
