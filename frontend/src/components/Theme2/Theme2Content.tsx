@@ -14,7 +14,7 @@ const Theme2Layout = () => {
     document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
   }, [isSidebarOpen]);
 
-  const toggleSidebar = () => setIsSidebarOpen(isSidebarOpen);
+  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
     <div className="bg-gray-900 text-white font-serif min-h-screen relative flex flex-col md:flex-row">
@@ -29,10 +29,10 @@ const Theme2Layout = () => {
       </div>
 
       {/* Sidebar */}
-      <aside
-        className={`absolute md:fixed top-0 left-0 h-full bg-gray-800 shadow-lg px-4 py-6 z-40 transform transition-transform duration-300 
-        w-4/5 sm:w-56 md:w-64 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+      <aside className={`absolute md:fixed top-0 left-0 h-full z-40 px-4 py-6 bg-gray-800 shadow-lg transform transition-transform duration-300 
+       w-4/5 sm:w-56 md:w-64 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       >
+
         <div className="hidden md:block mb-8">
           <h2 className="text-2xl font-extrabold tracking-wide">🛒 ShopMate</h2>
         </div>
@@ -74,8 +74,14 @@ const Theme2Layout = () => {
       )}
 
       {/* Main Content */}
-      <main className="pt-16 md:pt-8 w-full px-6 py-6 md:ml-64 overflow-x-hidden min-h-screen">
-        <Outlet />
+      <main className="w-full min-h-screen pt-16 md:pt-8 px-6 py-6 md:ml-64 overflow-x-hidden">
+        <div className="fixed bottom-0 left-0 text-xs text-white bg-black px-2 py-1 z-[1000]">
+  <span className="block sm:hidden">📱 Mobile (sm:hidden shown)</span>
+  <span className="hidden sm:block md:hidden">📱 Tablet (sm:block, md:hidden)</span>
+  <span className="hidden md:block">🖥️ Desktop (md:block shown)</span>
+</div>
+
+      <Outlet />
       </main>
     </div>
   );
