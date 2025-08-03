@@ -7,13 +7,11 @@ import ThemeDropdown from "../theme_dropdown";
 
 const Theme2Layout = () => {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-900 text-white font-sans">
-      {/* Sidebar */}
-     <aside className="w-full md:w-64 bg-gray-800 shadow-lg px-4 py-6 flex flex-col justify-start md:fixed md:h-screen max-h-[50vh] md:max-h-none overflow-y-auto">
-
+    <div className="min-h-screen bg-gray-900 text-white font-serif">
+      {/* Fixed Left Sidebar (always visible, even on mobile) */}
+      <aside className="fixed top-0 left-0 h-screen w-64 bg-gray-800 shadow-lg px-4 py-6 flex flex-col z-50">
         <h2 className="text-2xl font-extrabold mb-8 tracking-wide">🛒 ShopMate</h2>
 
-        {/* Dropdown toggle */}
         <div className="mb-6">
           <ThemeDropdown />
         </div>
@@ -36,14 +34,13 @@ const Theme2Layout = () => {
           ))}
         </nav>
 
-        <div className="mt-6 md:mt-auto pt-6 text-xs text-gray-500 text-center">
+        <div className="mt-auto pt-6 text-xs text-gray-400 text-center">
           © 2025 ShopMate, Inc.
         </div>
       </aside>
 
-      {/* Page Content */}
-      <main className="w-full md:ml-64 px-6 py-8 mt-4 md:mt-0 overflow-x-hidden">
-
+      {/* Page Content (pushed right by sidebar) */}
+      <main className="ml-64 px-6 py-8 overflow-x-hidden">
         <Outlet />
       </main>
     </div>
