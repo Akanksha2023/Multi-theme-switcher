@@ -38,7 +38,7 @@ const Theme2Content = () => {
           <main className="p-6 pb-20">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
               <h1 className="text-3xl font-bold">
-                🌓 Multi-Theme Shop (Theme 2)
+                🌓 Multi-Theme Switcher
               </h1>
 
            

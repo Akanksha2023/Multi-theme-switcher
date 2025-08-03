@@ -18,3 +18,56 @@
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
+
+.transform-style {
+  transform-style: preserve-3d;
+}
+
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Optional glow effect */
+
+
+.glow-card {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.glow-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 120%;
+  background: conic-gradient(
+    from 0deg,
+    #ff00cc,
+    #3333ff,
+    #00ffee,
+    #ffcc00,
+    #ff00cc
+  );
+  filter: blur(40px);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: -1;
+  animation: rotateGlow 4s linear infinite;
+}
+
+.glow-card:hover::before {
+  opacity: 0.6;
+}
+
+@keyframes rotateGlow {
+  0% {
+    transform: rotate(0deg) translate(-10%, -10%);
+  }
+  100% {
+    transform: rotate(360deg) translate(-10%, -10%);
+  }
+}

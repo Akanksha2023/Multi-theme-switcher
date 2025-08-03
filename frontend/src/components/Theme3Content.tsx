@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap} from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Theme3Content = () => {
@@ -49,34 +50,48 @@ const Theme3Content = () => {
       >
         <h2 className="text-3xl sm:text-4xl mb-4 font-bold">🏡 Home Sweet Home</h2>
         <p className="text-lg max-w-xl">Welcome to the most colorful world of fun and learning!</p>
-      </section>
+</section>
 
       {/* GAMES */}
-      <section
-        id="games"
-        ref={(el) => void (sectionsRef.current[1] = el)}
-        className="min-h-screen bg-yellow-100 px-4 sm:px-10 py-12"
+<section
+  id="games"
+  ref={(el) => void (sectionsRef.current[1] = el)}
+  className="min-h-screen bg-gradient-to-br from-yellow-100 to-pink-100 px-4 sm:px-10 py-16"
+>
+  <h2 className="text-4xl font-extrabold text-center mb-12 text-purple-800 drop-shadow-lg">
+    🎮 Games Zone
+  </h2>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 place-items-center">
+    {[
+      { icon: "🎯", title: "Target Dash", color: "bg-rose-300" },
+      { icon: "🐍", title: "Snake & Ladder", color: "bg-green-300" },
+      { icon: "👾", title: "Pixel Invaders", color: "bg-sky-300" },
+    ].map((game, i) => (
+      <div
+        key={i}
+        className="w-60 h-64 relative transform-style preserve-3d group hover:rotate-y-180 transition-transform duration-700 perspective-1000 glow-card"
       >
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-center">🎲 Games Zone</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
-          {[1, 2, 3].map((num, i) => (
-            <div
-              key={i}
-              className="group w-56 sm:w-60 h-56 sm:h-60 bg-white text-center rounded-2xl shadow-xl transition-transform duration-300 hover:rotate-y-180 perspective-1000 relative"
-            >
-              <div className="absolute inset-0 bg-pink-300 rounded-2xl p-6 backface-hidden group-hover:rotate-y-180 transition-transform duration-500 flex items-center justify-center text-xl font-bold">
-                Game {num}
-              </div>
-              <div className="absolute inset-0 bg-blue-200 rounded-2xl p-6 rotate-y-180 backface-hidden group-hover:rotate-y-0 transition-transform duration-500 flex flex-col items-center justify-center text-base">
-                <p>🎉 Fun Game {num}</p>
-                <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-full hover:scale-110 hover:bg-green-600 transition-all">
-                  Play Now
-                </button>
-              </div>
-            </div>
-          ))}
+        {/* Front */}
+        <div
+          className={`absolute w-full h-full rounded-2xl ${game.color} text-white flex flex-col items-center justify-center text-2xl font-bold backface-hidden shadow-2xl glow-card`}
+        >
+          <span className="text-5xl animate-bounce drop-shadow-lg">{game.icon}</span>
+          <p className="mt-4">{game.title}</p>
         </div>
-      </section>
+
+        {/* Back */}
+        <div className="absolute w-full h-full rounded-2xl bg-purple-900 text-white text-center transform rotate-y-180 backface-hidden flex flex-col items-center justify-center shadow-2xl p-4">
+          <p className="text-lg font-semibold">Ready to Play?</p>
+          <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded-full hover:scale-110 hover:bg-green-600 transition-all">
+            Play Now
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
 
       {/* GALLERY */}
       <section
