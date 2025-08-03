@@ -7,14 +7,16 @@ import ThemeDropdown from "../theme_dropdown";
 
 const Theme2Layout = () => {
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white font-sans">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-900 text-white font-sans">
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 shadow-lg fixed h-screen px-4 py-6 flex flex-col justify-start">
+      <aside className="w-full md:w-64 bg-gray-800 shadow-lg px-4 py-6 flex flex-col justify-start md:fixed md:h-screen">
         <h2 className="text-2xl font-extrabold mb-8 tracking-wide">🛒 ShopMate</h2>
-         {/* Dropdown toggle */}
+
+        {/* Dropdown toggle */}
         <div className="mb-6">
           <ThemeDropdown />
         </div>
+
         <nav className="flex flex-col gap-3">
           {["home", "about", "faq", "contact"].map((item) => (
             <NavLink
@@ -32,19 +34,20 @@ const Theme2Layout = () => {
             </NavLink>
           ))}
         </nav>
-        <div className="mt-auto pt-6 text-xs text-gray-500 text-center">
+        
+        <div className="mt-6 md:mt-auto pt-6 text-xs text-gray-500 text-center">
           © 2025 ShopMate, Inc.
         </div>
       </aside>
 
       {/* Page Content */}
-      <main className="ml-64 w-full px-6 py-8 overflow-x-hidden">
+      <main className="w-full md:ml-64 px-6 py-8 overflow-x-hidden">
         <Outlet />
       </main>
-      
     </div>
   );
 };
+
 
 const Theme2Content = () => {
   return (
