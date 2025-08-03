@@ -14,7 +14,7 @@ const Theme2Layout = () => {
     document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
   }, [isSidebarOpen]);
 
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const toggleSidebar = () => setIsSidebarOpen(isSidebarOpen);
 
   return (
     <div className="bg-gray-900 text-white font-serif min-h-screen relative flex flex-col md:flex-row">
