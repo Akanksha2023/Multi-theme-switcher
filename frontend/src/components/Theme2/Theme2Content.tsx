@@ -29,11 +29,18 @@ const Theme2Layout = () => {
       </div>
 
       {/* Sidebar */}
-      <aside
-        className={`absolute md:fixed top-0 left-0 h-full bg-gray-800 shadow-lg px-4 py-6 z-40 transform transition-transform duration-300
-        w-[80%] max-w-[270px] md:w-64 
-        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
-      >
+   <aside
+  className={`
+    fixed top-0 left-0 h-full z-40 bg-gray-800 text-white shadow-lg px-4 py-6
+    w-4/5 max-w-[250px]
+    md:w-64 md:max-w-none
+    transform transition-transform duration-300
+    md:translate-x-0
+    ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+  `}
+>
+
+
         <div className="hidden md:block mb-8">
           <h2 className="text-2xl font-extrabold tracking-wide">🛒 ShopMate</h2>
         </div>
@@ -75,9 +82,12 @@ const Theme2Layout = () => {
       )}
 
       {/* Main Content */}
-      <main
-        className="w-full min-h-screen pt-16 md:pt-8 px-6 py-6 overflow-x-hidden md:ml-64"
-      >
+    <main
+  className={`transition-all duration-300 px-4 sm:px-6 py-6 overflow-y-auto pt-20 md:pt-6 ${
+    isSidebarOpen ? 'opacity-50 blur-sm pointer-events-none' : ''
+  } md:ml-64`}
+>
+
         <Outlet />
       </main>
     </div>
