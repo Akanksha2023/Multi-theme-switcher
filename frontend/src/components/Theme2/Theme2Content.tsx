@@ -9,7 +9,7 @@ import ThemeDropdown from '../theme_dropdown';
 const Theme2Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Prevent scroll when mobile sidebar is open
+  // Lock scroll on body when sidebar is open
   useEffect(() => {
     document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
   }, [isSidebarOpen]);
@@ -17,8 +17,8 @@ const Theme2Layout = () => {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
   return (
-    <div className="bg-gray-900 text-white font-serif min-h-screen relative flex flex-col md:flex-row">
-      {/* Mobile Header */}
+    <div className="bg-gray-900 text-white font-serif min-h-screen flex">
+      {/* Mobile Top Header */}
       <div className="md:hidden fixed top-0 left-0 w-full z-30 bg-gray-800 flex justify-between items-center px-4 py-3 border-b border-gray-700">
         <h2 className="text-xl font-bold">🛒 ShopMate</h2>
         <button onClick={toggleSidebar} className="text-white">
@@ -29,10 +29,11 @@ const Theme2Layout = () => {
       </div>
 
       {/* Sidebar */}
-      <aside className={`absolute md:fixed top-0 left-0 h-full z-40 px-4 py-6 bg-gray-800 shadow-lg transform transition-transform duration-300 
-       w-4/5 sm:w-56 md:w-64 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+      <aside
+        className={`absolute md:fixed top-0 left-0 h-full bg-gray-800 shadow-lg px-4 py-6 z-40 transform transition-transform duration-300
+        w-[80%] max-w-[270px] md:w-64 
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       >
-
         <div className="hidden md:block mb-8">
           <h2 className="text-2xl font-extrabold tracking-wide">🛒 ShopMate</h2>
         </div>
@@ -65,23 +66,19 @@ const Theme2Layout = () => {
         </div>
       </aside>
 
-      {/* Backdrop for mobile */}
+      {/* Backdrop when sidebar is open on mobile */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
           onClick={toggleSidebar}
-        ></div>
+        />
       )}
 
       {/* Main Content */}
-      <main className="w-full min-h-screen pt-16 md:pt-8 px-6 py-6 md:ml-64 overflow-x-hidden">
-        <div className="fixed bottom-0 left-0 text-xs text-white bg-black px-2 py-1 z-[1000]">
-  <span className="block sm:hidden">📱 Mobile (sm:hidden shown)</span>
-  <span className="hidden sm:block md:hidden">📱 Tablet (sm:block, md:hidden)</span>
-  <span className="hidden md:block">🖥️ Desktop (md:block shown)</span>
-</div>
-
-      <Outlet />
+      <main
+        className="w-full min-h-screen pt-16 md:pt-8 px-6 py-6 overflow-x-hidden md:ml-64"
+      >
+        <Outlet />
       </main>
     </div>
   );
