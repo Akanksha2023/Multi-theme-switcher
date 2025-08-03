@@ -136,9 +136,9 @@ const Theme3Content = () => {
         </form>
       </section>
 
-      <footer className="bg-purple-400 text-white text-center p-4 text-sm sm:text-base">
+      {/* <footer className="bg-purple-400 text-white text-center p-4 text-sm sm:text-base">
         © 2025 Kids' Theme Land. All rights reserved.
-      </footer>
+      </footer> */}
     </div>
   );
 };
