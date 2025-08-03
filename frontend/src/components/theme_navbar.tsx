@@ -5,6 +5,7 @@ const ThemeNavbar = () => {
   const { theme } = useTheme();
 
   const isKidsTheme = theme === 'theme3';
+  const isDarkTheme = theme === 'theme2';
 
   const baseNavClass =
     theme === 'theme1'
@@ -26,7 +27,7 @@ const ThemeNavbar = () => {
         Multi-Theme Switcher
       </div>
 
-      {!isKidsTheme && (
+      {!isKidsTheme && !isDarkTheme && (
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <button onClick={() => scrollTo('home')} className={linkClass}>Home</button>
           <button onClick={() => scrollTo('about')} className={linkClass}>About</button>
