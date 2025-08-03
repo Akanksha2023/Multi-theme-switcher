@@ -1,6 +1,10 @@
 import { useTheme } from '../contexts/ThemeContext';
 import ThemeDropdown from './theme_dropdown';
 
+// Navbar component that adapts based on the current theme
+// It displays different styles and links based on the selected theme
+// This component is used in Theme1 for now but can be extended for others
+
 const ThemeNavbar = () => {
   const { theme } = useTheme();
 

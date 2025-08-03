@@ -2,7 +2,7 @@ import { useTheme } from '../contexts/ThemeContext';
 
 const Footer = () => {
   const { theme } = useTheme();
-
+//Determine footer styles based on theme
   const footerClass =
     theme === 'theme1'
       ? 'bg-white text-gray-800'

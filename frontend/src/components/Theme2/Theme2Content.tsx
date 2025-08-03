@@ -7,6 +7,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 
+// Main content component for Theme 2
+// This component includes the sidebar, topbar, and main content area
+
 const Theme2Content = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 

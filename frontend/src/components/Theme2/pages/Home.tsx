@@ -6,6 +6,8 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+
+  // Fetch products from the API
   useEffect(() => {
     fetch("https://fakestoreapi.com/products?limit=6")
       .then((res) => {

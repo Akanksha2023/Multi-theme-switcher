@@ -7,6 +7,10 @@ interface ThemeContextType {
   setTheme: (theme: Theme) => void;
 }
 
+// Create a context for theme management
+// This context will provide the current theme and a function to change it
+// It can be used throughout the application to access and modify the theme
+
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {

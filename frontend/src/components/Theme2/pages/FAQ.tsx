@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
+// Sample FAQ data
+// In a real app case, this could be fetched from an API or defined in a separate file
+// For simplicity, we use static data here
+
 const faqs = [
   {
     question: "How do I switch between themes?",

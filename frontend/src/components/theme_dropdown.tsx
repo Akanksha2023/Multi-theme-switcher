@@ -1,5 +1,9 @@
 import { useTheme } from '../contexts/ThemeContext';
 
+//Select dropdown for theme switching
+// This component allows users to select a theme from a dropdown menu
+// It uses the useTheme context to get the current theme and set a new theme
+
 const ThemeDropdown = () => {
   const { theme, setTheme } = useTheme();
 

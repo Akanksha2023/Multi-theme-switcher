@@ -1,6 +1,8 @@
 import themerImage from '../assets/images/Themer2.jpg';
 import multiTemer from "../assets/images/multiTemer.jpg";
 
+// Theme1Content component that renders the main content for Theme 1
+
 const Theme1Content = () => {
  
 
