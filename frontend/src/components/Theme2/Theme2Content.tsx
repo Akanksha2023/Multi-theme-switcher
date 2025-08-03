@@ -6,8 +6,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
-import Footer from "../footer";
-import ThemeDropdown from "../theme_dropdown"; // ✅ Make sure this path is correct
 
 const Theme2Content = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -40,8 +38,7 @@ const Theme2Content = () => {
                 🌓 Multi-Theme Shop (Theme 2)
               </h1>
 
-              {/* ✅ Always show on all devices */}
-              <ThemeDropdown />
+           
             </div>
 
             <Routes>

@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import ThemeDropdown from "../theme_dropdown";
 
 const Sidebar = ({ isOpen, toggleSidebar }:any) => {
   return (
@@ -21,6 +22,11 @@ const Sidebar = ({ isOpen, toggleSidebar }:any) => {
           {isOpen ? <ChevronLeft /> : <ChevronRight />}
         </button>
       </div>
+
+        {/* Theme Switcher (Only Desktop) */}
+<div className="hidden md:block px-4 py-3 border-b border-gray-700">
+  <ThemeDropdown />
+</div>
 
       {/* Nav Links */}
       <nav className="flex flex-col gap-4 mt-6 px-4">
