@@ -2,35 +2,48 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
-import Footer from "../footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
+import Footer from "../footer";
+import ThemeDropdown from "../theme_dropdown"; // ✅ Make sure this path is correct
 
 const Theme2Content = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // collapsed by default on mobile
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-950 text-white font-serif">
-      {/* Flex wrapper for layout */}
+    <div className="flex flex-col min-h-screen font-serif bg-gray-950 text-white">
       <div className="flex flex-1">
-        {/* Sidebar - visible on desktop or toggled on mobile */}
+        {/* Sidebar */}
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-        {/* Content Area */}
-        <div className="flex-1 flex flex-col">
-          {/* Topbar - visible only on mobile */}
-          <div className="block md:hidden">
+        {/* Main Content */}
+        <div
+          className={`flex-1 transition-all duration-300 ease-in-out ${
+            isSidebarOpen ? "ml-0 md:ml-64" : "ml-0"
+          }`}
+        >
+          {/* Topbar (only for mobile sidebar toggle) */}
+          <div className="md:hidden">
             <Topbar toggleSidebar={toggleSidebar} />
           </div>
 
-          {/* Main Page */}
-          <main className="flex-grow p-4 sm:p-6">
+          {/* Page content */}
+          <main className="p-6 pb-20">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+              <h1 className="text-3xl font-bold">
+                🌓 Multi-Theme Shop (Theme 2)
+              </h1>
+
+              {/* ✅ Always show on all devices */}
+              <ThemeDropdown />
+            </div>
+
             <Routes>
               <Route path="/theme2/home" element={<Home />} />
               <Route path="/theme2/about" element={<About />} />
@@ -38,11 +51,9 @@ const Theme2Content = () => {
               <Route path="/theme2/faq" element={<FAQ />} />
             </Routes>
           </main>
-
-          {/* Footer always at the bottom */}
-          <Footer />
         </div>
       </div>
+
     </div>
   );
 };
