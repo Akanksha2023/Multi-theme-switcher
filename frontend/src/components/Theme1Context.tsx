@@ -1,10 +1,8 @@
-import React from 'react';
-import { useTheme } from '../contexts/ThemeContext';
 import themerImage from '../assets/images/Themer2.jpg';
 import multiTemer from "../assets/images/multiTemer.jpg";
 
 const Theme1Content = () => {
-  const { theme } = useTheme();
+ 
 
   return (
     <div className="theme1 min-h-screen px-4 sm:px-6 py-10 bg-white text-gray-800">

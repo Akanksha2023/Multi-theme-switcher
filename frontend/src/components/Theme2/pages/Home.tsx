@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 const Home = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [cart, setCart] = useState<{ [id: number]: number }>({});
