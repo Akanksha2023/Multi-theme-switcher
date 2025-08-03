@@ -26,10 +26,14 @@ const App = () => {
 
   return (
     <>
-      <ThemeNavbar />
+      {/* Show ThemeNavbar only for theme1 and theme3 */}
+      {theme !== 'theme2' && <ThemeNavbar />}
+
+      {/* Render appropriate theme content */}
       {theme === 'theme1' && <Theme1Content />}
       {theme === 'theme2' && <Theme2Content />}
       {theme === 'theme3' && <Theme3Content />}
+
       <Footer />
     </>
   );
