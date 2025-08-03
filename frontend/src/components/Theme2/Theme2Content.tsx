@@ -1,56 +1,34 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, NavLink, Outlet } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import FAQ from './pages/FAQ';
-import ThemeDropdown from '../theme_dropdown';
+import { useState } from 'react';
+import { NavLink, Outlet, Navigate, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import FAQ from "./pages/FAQ";
+import ThemeDropdown from "../theme_dropdown";
 
 const Theme2Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Lock scroll on body when sidebar is open
-  useEffect(() => {
-    document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
-  }, [isSidebarOpen]);
-
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
-    <div className="bg-gray-900 text-white font-serif min-h-screen flex">
-      {/* Mobile Top Header */}
-      <div className="md:hidden fixed top-0 left-0 w-full z-30 bg-gray-800 flex justify-between items-center px-4 py-3 border-b border-gray-700">
-        <h2 className="text-xl font-bold">🛒 ShopMate</h2>
-        <button onClick={toggleSidebar} className="text-white">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
-          </svg>
-        </button>
-      </div>
-
+    <div className="min-h-screen flex bg-gray-900 text-white font-sans">
+      
       {/* Sidebar */}
-   <aside
-  className={`
-    fixed top-0 left-0 h-full z-40 bg-gray-800 text-white shadow-lg px-4 py-6
-    w-4/5 max-w-[250px]
-    md:w-64 md:max-w-none
-    transform transition-transform duration-300
-    md:translate-x-0
-    ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-  `}
->
-
-
-        <div className="hidden md:block mb-8">
-          <h2 className="text-2xl font-extrabold tracking-wide">🛒 ShopMate</h2>
-        </div>
-
+      <aside
+        className={`fixed md:static top-0 left-0 h-full z-40 bg-gray-800 text-white shadow-lg px-4 py-6 
+        w-64 transition-transform duration-300
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+        md:translate-x-0 md:flex md:flex-col`}
+      >
+        <h2 className="text-2xl font-extrabold mb-8 tracking-wide">🛒 ShopMate</h2>
         <div className="mb-6">
           <ThemeDropdown />
         </div>
-
         <nav className="flex flex-col gap-3">
-          {['home', 'about', 'faq', 'contact'].map((item) => (
+          {["home", "about", "faq", "contact"].map((item) => (
             <NavLink
               key={item}
               to={`/theme2/${item}`}
@@ -58,8 +36,8 @@ const Theme2Layout = () => {
               className={({ isActive }) =>
                 `capitalize px-3 py-2 rounded-md transition-all duration-300 ${
                   isActive
-                    ? 'bg-indigo-600 text-white shadow-md'
-                    : 'hover:bg-gray-700 hover:text-indigo-300'
+                    ? "bg-indigo-600 text-white shadow-md"
+                    : "hover:bg-gray-700 hover:text-indigo-300"
                 }`
               }
             >
@@ -67,29 +45,29 @@ const Theme2Layout = () => {
             </NavLink>
           ))}
         </nav>
-
-        <div className="mt-6 md:mt-auto pt-6 text-xs text-gray-400 text-center">
+        <div className="mt-auto pt-6 text-xs text-gray-400 text-center">
           © 2025 ShopMate, Inc.
         </div>
       </aside>
 
-      {/* Backdrop when sidebar is open on mobile */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
-          onClick={toggleSidebar}
-        />
-      )}
+      {/* Main content */}
+      <div className="flex-1 flex flex-col">
+        {/* Top Bar */}
+        <div className="md:hidden bg-gray-800 p-4 flex justify-between items-center shadow-md z-50">
+          <h2 className="text-xl font-bold">🛒 ShopMate</h2>
+          <button onClick={toggleSidebar} className="text-white focus:outline-none">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
+              viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
 
-      {/* Main Content */}
-    <main
-  className={`transition-all duration-300 px-4 sm:px-6 py-6 overflow-y-auto pt-20 md:pt-6 ${
-    isSidebarOpen ? 'opacity-50 blur-sm pointer-events-none' : ''
-  } md:ml-64`}
->
-
-        <Outlet />
-      </main>
+        {/* Page content */}
+        <main className="flex-1 p-6 overflow-y-auto pt-16 md:pt-6">
+          <Outlet />
+        </main>
+      </div>
     </div>
   );
 };
@@ -107,5 +85,6 @@ const Theme2Content = () => {
     </Routes>
   );
 };
+
 
 export default Theme2Content;
