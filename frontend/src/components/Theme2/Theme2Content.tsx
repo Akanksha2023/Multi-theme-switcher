@@ -15,46 +15,54 @@ const Theme2Layout = () => {
 
   return (
     <div className="min-h-screen flex bg-gray-900 text-white font-sans">
-      
+
       {/* Sidebar */}
       <aside
-        className={`fixed md:static top-0 left-0 h-full z-40 bg-gray-800 text-white shadow-lg px-4 py-6 
-        w-64 transition-transform duration-300
-        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
-        md:translate-x-0 md:flex md:flex-col`}
+        className={`fixed md:static top-0 left-0 h-screen z-40 bg-gray-800 shadow-lg px-2 py-6
+        w-20 md:w-24 transition-transform duration-300
+        flex flex-col justify-between
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+        md:translate-x-0`}
       >
-        <h2 className="text-2xl font-extrabold mb-8 tracking-wide">🛒 ShopMate</h2>
-        <div className="mb-6">
-          <ThemeDropdown />
+        {/* Top: Logo + Theme + Nav */}
+        <div className="flex flex-col items-center gap-6">
+          <h2 className="text-sm font-bold text-center">ShopMate</h2>
+
+          <div className="w-full px-1">
+            <ThemeDropdown />
+          </div>
+
+          <nav className="flex flex-col items-center gap-3 text-xs w-full">
+            {["home", "about", "faq", "contact"].map((item) => (
+              <NavLink
+                key={item}
+                to={`/theme2/${item}`}
+                onClick={() => setIsSidebarOpen(false)}
+                className={({ isActive }) =>
+                  `block w-full text-center py-1.5 rounded-md transition-all duration-300 ${
+                    isActive
+                      ? "bg-indigo-600 font-semibold text-white"
+                      : "hover:bg-gray-700 hover:text-indigo-300"
+                  }`
+                }
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </NavLink>
+            ))}
+          </nav>
         </div>
-        <nav className="flex flex-col gap-3">
-          {["home", "about", "faq", "contact"].map((item) => (
-            <NavLink
-              key={item}
-              to={`/theme2/${item}`}
-              onClick={() => setIsSidebarOpen(false)}
-              className={({ isActive }) =>
-                `capitalize px-3 py-2 rounded-md transition-all duration-300 ${
-                  isActive
-                    ? "bg-indigo-600 text-white shadow-md"
-                    : "hover:bg-gray-700 hover:text-indigo-300"
-                }`
-              }
-            >
-              {item}
-            </NavLink>
-          ))}
-        </nav>
-        <div className="mt-auto pt-6 text-xs text-gray-400 text-center">
+
+        {/* Footer at bottom */}
+        <footer className="text-[10px] text-gray-400 text-center px-1 w-full">
           © 2025 ShopMate, Inc.
-        </div>
+        </footer>
       </aside>
 
-      {/* Main content */}
+      {/* Main content area */}
       <div className="flex-1 flex flex-col">
-        {/* Top Bar */}
+        {/* Top Bar (mobile only) */}
         <div className="md:hidden bg-gray-800 p-4 flex justify-between items-center shadow-md z-50">
-          <h2 className="text-xl font-bold">🛒 ShopMate</h2>
+          <h2 className="text-base font-bold">ShopMate</h2>
           <button onClick={toggleSidebar} className="text-white focus:outline-none">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
               viewBox="0 0 24 24">
@@ -64,7 +72,7 @@ const Theme2Layout = () => {
         </div>
 
         {/* Page content */}
-        <main className="flex-1 p-6 overflow-y-auto pt-16 md:pt-6">
+        <main className="flex-1 p-4 md:ml-24 pt-20 md:pt-6 overflow-y-auto">
           <Outlet />
         </main>
       </div>
@@ -85,6 +93,5 @@ const Theme2Content = () => {
     </Routes>
   );
 };
-
 
 export default Theme2Content;
