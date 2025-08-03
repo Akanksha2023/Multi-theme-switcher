@@ -30,7 +30,7 @@ const Theme2Layout = () => {
       {/* Sidebar */}
       <aside
         className={`fixed top-0 left-0 h-full bg-gray-800 shadow-lg px-4 py-6 z-40 transform transition-transform duration-300 
-        w-4/5 sm:w-64 md:w-56 md:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+        w-4/5 sm:w-24 md:w-46 md:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
       >
         <div className="hidden md:block mb-8">
           <h2 className="text-2xl font-extrabold tracking-wide">🛒 ShopMate</h2>
